@@ -18,6 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } else {
     $name = test_input($_POST["name"]);
   }
+  //Expressio regular. $name nomes accepta lletres i espais blanc 
+  if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+    $nameErr = "Only letters and white space allowed"; 
+  }
   
   if (empty($_POST["email"])) {
     $emailErr = "Email is required";
@@ -29,6 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $website = "";
   } else {
     $website = test_input($_POST["website"]);
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+      $websiteErr = "Invalid URL"; 
+    }
   }
 
   if (empty($_POST["comment"])) {
@@ -55,23 +62,37 @@ function test_input($data) {
 <h2>PHP Form Validation Example</h2>
 <p><span class="error">* required field.</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name">
+  Name: <input type="text" name="name" value="<?php echo $name?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email">
+  E-mail: <input type="text" name="email" value="<?php echo $email ?>">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
-  Website: <input type="text" name="website">
+  Website: <input type="text" name="website" value="<?php echo $website ?>">
   <span class="error"><?php echo $websiteErr;?></span>
   <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+  Comment: <textarea name="comment" rows="5" cols="40"><?php echo $comment ?></textarea>
   <br><br>
+  <?php 
+    if($gender == "female"){
+      $female = "checked";
+      $male = "";
+    }
+    else if($gender == "male"){
+      $female = "";
+      $male = "checked";
+    }
+    else{
+      $female = "";
+      $male = "";
+    }
+  ?>
   Gender:
-  <input type="radio" name="gender" value="female">Female
-  <input type="radio" name="gender" value="male">Male
+  <input type="radio" name="gender" value="female" <?php echo $female ?>>Female
+  <input type="radio" name="gender" value="male" <?php echo $male ?>>Male
   <span class="error">* <?php echo $genderErr;?></span>
   <br><br>
-  <input type="submit" name="submit" value="Submit">  
+  <input type="submit" id="submit" name="submit" value="Submit">  
 </form>
 
 <?php
@@ -86,6 +107,13 @@ echo $comment;
 echo "<br>";
 echo $gender;
 ?>
-
+<script type="text/javascript">
+  document.forms[0].onsubmit=function(){
+    //Aixo ve provocat per un Cancelar
+    if (confirm("Desitja enviar realment el formulari?") == false) {
+      return false;
+    }
+  };
+</script>
 </body>
 </html>
