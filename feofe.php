@@ -43,8 +43,6 @@
     			}
 			}
 			alert(countUp);
-
-
 		};
 
 		isUpperCase = function(char) {
