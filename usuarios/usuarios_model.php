@@ -52,7 +52,6 @@ class Usuario extends DBAbstractModel {
 		clave='$clave'
 		WHERE email = '$email'
 		";
-		echo $this->query;
 		$this->execute_single_query();
 	}
 

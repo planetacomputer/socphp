@@ -3,7 +3,7 @@
 require_once('usuarios_model.php');
 require_once('aulas_model.php');
 # Traer los datos de un usuario. Retrieve, get, select
-$usuario1 = new Usuario();
+/*$usuario1 = new Usuario();
 $usuario1->get('user@email.com');
 print $usuario1->nombre . ' ' . $usuario1->apellido . ' existe<br>';
 
@@ -36,8 +36,27 @@ $usuario4 = new Usuario();
 $usuario4->get('lei@mail.com');
 $usuario4->delete('lei@mail.com');
 print $usuario4->nombre.' ' . $usuario4->apellido.' ha sido eliminado';
+*/
 echo "<br>AULAS";
-$aula = new Aulas();
-$aula->get(1);
-print $aula->id . ' ' . $aula->num . "-" .$aula->superficie .'m2 ha sido recuperado<br>';
+$aula1 = new Aulas();
+//Prova de get
+$aula1->get(1);
+print $aula1->id . ' ' . $aula1->num . "-" .$aula1->superficie .'m2 ha sido recuperado<br>';
+//Prova de set
+$edit_user_data = array(
+	'num'=> 3,
+	'superficie'=> 14,
+	'edificio'=>'OMEGA'
+);
+$aula2 = new Aulas();
+$aula2->set($edit_user_data);
+//$aula2->get(3);
+//print $aula2->id . ' ' . $aula2->num . "-" .$aula2->superficie .'m2 ha sido recuperado<br>';
+$edit_user_data = array(
+	'num'=> 3,
+	'superficie'=> 24,
+	'edificio'=>'ALFA'
+);
+$aula3 = new Aulas();
+$aula3->set($edit_user_data);
 ?>

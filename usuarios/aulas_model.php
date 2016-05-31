@@ -27,6 +27,21 @@ class Aulas extends DBAbstractModel {
 	}
 
 	public function set($user_data=array()) {
+		if(array_key_exists('num', $user_data)):
+			$this->get($user_data['num']);
+			if($user_data['num'] != $this->num):
+				foreach ($user_data as $campo=>$valor):
+					$$campo = $valor;
+				endforeach;
+				$this->query = "
+				INSERT INTO aulas
+				(num, superficie, edificio)
+				VALUES
+				($num, $superficie, '$edificio')";
+
+				$this->execute_single_query();
+			endif;
+		endif;
 	}
 
 	public function edit($user_data=array()) {
