@@ -36,6 +36,8 @@ $usuario4 = new Usuario();
 $usuario4->get('lei@mail.com');
 $usuario4->delete('lei@mail.com');
 print $usuario4->nombre.' ' . $usuario4->apellido.' ha sido eliminado';
-
+echo "<br>AULAS";
 $aula = new Aulas();
+$aula->get(1);
+print $aula->id . ' ' . $aula->num . "-" .$aula->superficie .'m2 ha sido recuperado<br>';
 ?>
