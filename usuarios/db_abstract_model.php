@@ -1,18 +1,19 @@
 <?php
+
 abstract class DBAbstractModel {
 	private static $db_host = 'localhost';
-	private static $db_user = 'usuario';
-	private static $db_pass = 'contraseña';
+	private static $db_user = 'root';
+	private static $db_pass = '';
 	protected $db_name = 'mydb';
 	protected $query;
 	protected $rows = array();
 	private $conn;
 	
 	# métodos abstractos para ABM de clases que hereden
-	abstract protected function get();
-	abstract protected function set();
-	abstract protected function edit();
-	abstract protected function delete();
+	abstract protected function get(); //Retrieve
+	abstract protected function set(); //Insert
+	abstract protected function edit();//Update
+	abstract protected function delete();//Delete
 	# los siguientes métodos pueden definirse con exactitud
 	# y no son abstractos
 	# Conectar a la base de datos
