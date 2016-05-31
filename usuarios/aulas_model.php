@@ -45,9 +45,24 @@ class Aulas extends DBAbstractModel {
 	}
 
 	public function edit($user_data=array()) {
+		foreach ($user_data as $campo=>$valor):
+			$$campo = $valor;
+		endforeach;
+		$this->query = "UPDATE aulas
+		SET num='$num',
+		superficie='$superficie',
+		edificio='$edificio'
+		WHERE num = '$num'
+		";
+		$this->execute_single_query();
 	}
 
-	public function delete($user_email='') {
+	public function delete($num='') {
+		$this->query = "
+		DELETE FROM aulas
+		WHERE num = '$num'
+		";
+		$this->execute_single_query();
 	}
 
 	function __destruct() {

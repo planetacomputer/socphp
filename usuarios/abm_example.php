@@ -42,21 +42,30 @@ $aula1 = new Aulas();
 //Prova de get
 $aula1->get(1);
 print $aula1->id . ' ' . $aula1->num . "-" .$aula1->superficie .'m2 ha sido recuperado<br>';
-//Prova de set
-$edit_user_data = array(
+
+$set_user_data = array(
 	'num'=> 3,
 	'superficie'=> 14,
 	'edificio'=>'OMEGA'
 );
+
+//insert aulas
 $aula2 = new Aulas();
-$aula2->set($edit_user_data);
+$aula2->set($set_user_data);
 //$aula2->get(3);
 //print $aula2->id . ' ' . $aula2->num . "-" .$aula2->superficie .'m2 ha sido recuperado<br>';
+
+//update aulas
 $edit_user_data = array(
 	'num'=> 3,
 	'superficie'=> 24,
 	'edificio'=>'ALFA'
 );
 $aula3 = new Aulas();
-$aula3->set($edit_user_data);
+$aula3->edit($edit_user_data);
+$aula3->get($edit_user_data['num']);
+print $aula3->id . ' ' . $aula3->num . "-" .$aula3->superficie .'m2 ha sido recuperado<br>';
+
+$aula4 = new Aulas();
+$aula4->delete(3);
 ?>
