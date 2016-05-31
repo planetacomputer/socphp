@@ -62,8 +62,14 @@ class Aulas extends DBAbstractModel {
 		DELETE FROM aulas
 		WHERE num = '$num'
 		";
-		echo $this->query;
+		//echo $this->query;
 		$this->execute_single_query();
+	}
+
+	public function listAll(){
+		$this->query = "
+		SELECT * FROM aulas";
+		$this->get_results_from_query();
 	}
 
 	function __destruct() {

@@ -6,7 +6,7 @@ abstract class DBAbstractModel {
 	private static $db_pass = '';
 	protected $db_name = 'mydb';
 	protected $query;
-	protected $rows = array();
+	public $rows = array();
 	private $conn;
 	
 	# métodos abstractos para ABM de clases que hereden

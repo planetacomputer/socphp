@@ -68,4 +68,10 @@ print $aula3->id . ' ' . $aula3->num . "-" .$aula3->superficie .'m2 ha sido recu
 
 $aula4 = new Aulas();
 $aula4->delete(3);
+
+$aula5 = new Aulas();
+$aula5->listAll();
+print_r($aula5->rows);
+echo $aula5->rows[0]['id']."<br>";
+echo $aula5->rows[1]['superficie'];
 ?>
