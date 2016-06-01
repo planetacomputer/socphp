@@ -4,7 +4,7 @@ require_once('db_abstract_model.php');
 class Aulas extends DBAbstractModel {
 	public $num;
 	public $superficie;
-	public $edifici;
+	public $edificio;
 	public $id;
 
 	function __construct() {
@@ -54,6 +54,7 @@ class Aulas extends DBAbstractModel {
 		edificio='$edificio'
 		WHERE num = '$num'
 		";
+		echo $this->query;
 		$this->execute_single_query();
 	}
 
