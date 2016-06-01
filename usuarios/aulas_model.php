@@ -38,7 +38,6 @@ class Aulas extends DBAbstractModel {
 				(num, superficie, edificio)
 				VALUES
 				($num, $superficie, '$edificio')";
-
 				$this->execute_single_query();
 			endif;
 		endif;
