@@ -4,19 +4,22 @@ $diccionario = array(
 	'subtitle'=>array(VIEW_SET_USER=>'Crear un nuevo usuario',
 	VIEW_GET_USER=>'Buscar usuario',
 	VIEW_DELETE_USER=>'Eliminar un usuario',
-	VIEW_EDIT_USER=>'Modificar usuario'
+	VIEW_EDIT_USER=>'Modificar usuario',
+	VIEW_LOGIN_USER=>'Login usuario',
 	),
 	'links_menu'=>array(
 	'VIEW_SET_USER'=>MODULO.VIEW_SET_USER.'/',
 	'VIEW_GET_USER'=>MODULO.VIEW_GET_USER.'/',
 	'VIEW_EDIT_USER'=>MODULO.VIEW_EDIT_USER.'/',
-	'VIEW_DELETE_USER'=>MODULO.VIEW_DELETE_USER.'/'
+	'VIEW_DELETE_USER'=>MODULO.VIEW_DELETE_USER.'/',
+	'VIEW_LOGIN_USER'=>MODULO.VIEW_LOGIN_USER.'/'
 	),
 	'form_actions'=>array(
-	'SET'=>'/socphp/minimvc2/'.MODULO.SET_USER.'/',
-	'GET'=>'/socphp/minimvc2/'.MODULO.GET_USER.'/',
-	'DELETE'=>'/socphp/minimvc2/'.MODULO.DELETE_USER.'/',
-	'EDIT'=>'/socphp/minimvc2/'.MODULO.EDIT_USER.'/'
+	'SET'=>'/minimvc2/'.MODULO.SET_USER.'/',
+	'GET'=>'/minimvc2/'.MODULO.GET_USER.'/',
+	'DELETE'=>'/minimvc2/'.MODULO.DELETE_USER.'/',
+	'EDIT'=>'/minimvc2/'.MODULO.EDIT_USER.'/',
+	'LOGIN'=>'/minimvc2/'.MODULO.LOGIN_USER.'/'
 	)
 );
 function get_template($form='get') {
@@ -37,7 +40,7 @@ function retornar_vista($vista, $data=array()) {
 	$html = get_template('template');
 	$html = str_replace('{subtitulo}', $diccionario['subtitle'][$vista],
 	$html);
-	echo $vista;
+	//echo $vista;
 	$html = str_replace('{formulario}', get_template($vista), $html);
 	$html = render_dinamic_data($html, $diccionario['form_actions']);
 	$html = render_dinamic_data($html, $diccionario['links_menu']);

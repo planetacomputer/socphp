@@ -2,8 +2,27 @@
 require_once('constants.php');
 require_once('model.php');
 require_once('view.php');
+session_start();
 
-handler();
+//autenticacion
+	
+	if(isset($_SESSION["userName"])) {
+		echo "identificado";
+		handler();
+	}
+	else{
+		echo $_POST["userName"];
+		if($_POST['userName'] == 'paco' && $_POST['password'] == '1111'){
+			$_SESSION["userName"] = "userName";
+			handler();
+		}
+		else{
+			retornar_vista(VIEW_LOGIN_USER, "");	
+		}
+		
+	}
+
+
 
 function handler() {
 	$event = VIEW_GET_USER;
@@ -18,7 +37,8 @@ function handler() {
 			break;
 		}
 	}
-	echo $event;
+	//echo $event;
+	
 	$user_data = helper_user_data();
 	$usuario = set_obj();
 	
