@@ -10,8 +10,9 @@ if(isset($_SESSION["userName"])) {
 	handler();
 }
 else{
+	$data = array();
 	//La sessio s'assigna si coincideixen username i password
-	if($_POST['userName'] == 'paco' && $_POST['password'] == '1111'){
+	if(isset($_POST['userName']) && $_POST['userName'] == 'paco' && $_POST['password'] == '1111'){
 		$_SESSION["userName"] = $_POST['userName'];
 		handler();
 	}
