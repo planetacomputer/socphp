@@ -4,25 +4,26 @@ require_once('model.php');
 require_once('view.php');
 session_start();
 
-//autenticacion
-	
-	if(isset($_SESSION["userName"])) {
-		echo "identificado";
+//autenticacio, abans de passar al handler
+if(isset($_SESSION["userName"])) {
+	echo "identificado";
+	handler();
+}
+else{
+	//La sessio s'assigna si coincideixen username i password
+	if($_POST['userName'] == 'paco' && $_POST['password'] == '1111'){
+		$_SESSION["userName"] = $_POST['userName'];
 		handler();
 	}
 	else{
-		echo $_POST["userName"];
-		if($_POST['userName'] == 'paco' && $_POST['password'] == '1111'){
-			$_SESSION["userName"] = "userName";
-			handler();
-		}
-		else{
-			retornar_vista(VIEW_LOGIN_USER, "");	
-		}
-		
+		//Nomes mostra aquest missatge en enviar dades del form
+		if(isset($_POST['userName'])){
+			$data = array('mensaje'=>"Usuari o password incorrectes");
+		};
+		retornar_vista(VIEW_LOGIN_USER, $data);	
 	}
-
-
+	
+}
 
 function handler() {
 	$event = VIEW_GET_USER;

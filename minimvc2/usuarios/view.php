@@ -15,11 +15,11 @@ $diccionario = array(
 	'VIEW_LOGIN_USER'=>MODULO.VIEW_LOGIN_USER.'/'
 	),
 	'form_actions'=>array(
-	'SET'=>'/minimvc2/'.MODULO.SET_USER.'/',
-	'GET'=>'/minimvc2/'.MODULO.GET_USER.'/',
-	'DELETE'=>'/minimvc2/'.MODULO.DELETE_USER.'/',
-	'EDIT'=>'/minimvc2/'.MODULO.EDIT_USER.'/',
-	'LOGIN'=>'/minimvc2/'.MODULO.LOGIN_USER.'/'
+	'SET'=>'/socphp/minimvc2/'.MODULO.SET_USER.'/',
+	'GET'=>'/socphp/minimvc2/'.MODULO.GET_USER.'/',
+	'DELETE'=>'/socphp/minimvc2/'.MODULO.DELETE_USER.'/',
+	'EDIT'=>'/socphp/minimvc2/'.MODULO.EDIT_USER.'/',
+	'LOGIN'=>'/socphp/minimvc2/'.MODULO.LOGIN_USER.'/'
 	)
 );
 function get_template($form='get') {
