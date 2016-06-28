@@ -1,0 +1,21 @@
+-titol
+-descripcio
+-categoria
+-requisitos
+	-titulacion
+	-experiencia
+	-edat
+	-data incorporacio
+	-carnet conduir
+	-idiomes
+-num vacantes
+-tipus de contracte
+-sou
+-jornada
+-ofertant
+	-nom
+	-adreça
+	-nombre empleats
+	-sector
+		-Automocio
+			-Chapa

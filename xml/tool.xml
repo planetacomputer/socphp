@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tool>
+   <field id="prodName">
+     <value>HAMMER HG260d6</value>
+   </field>
+   <field id="prodNo">
+     <value>32456240</value>
+   </field>
+   <field id="price">
+     <value>$17.00</value>
+   </field>
+   
+   <field id="prodReg">
+     <value>HAMMddER HG260d6</value>
+   </field>
+   <field id="prodNum">
+     <value>32456240</value>
+   </field>
+   <field id="change">
+     <value>$23</value>
+   </field>
+ </tool>
