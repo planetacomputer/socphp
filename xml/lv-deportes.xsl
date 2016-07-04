@@ -25,7 +25,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <th>Titular</th>
       <th>Descripcion</th>
     </tr>
-    <xsl:for-each select="rss/channel/item">
+    <xsl:for-each select="rss/channel/item[last()]">
     <tr>
       <td>
         <img>
