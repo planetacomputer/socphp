@@ -26,6 +26,10 @@
       <input message="tns:AritmeticaPeticion" />
       <output message="tns:AritmeticaRespuesta" />
     </operation>
+	<operation name="multiplicar">
+      <input message="tns:AritmeticaPeticion" />
+      <output message="tns:AritmeticaRespuesta" />
+    </operation>
   </portType>
  
   <binding name="AritmeticaBinding" type="tns:AritmeticaPort">
@@ -43,6 +47,17 @@
     </operation>
     <operation name="restar">
         <soap:operation soapAction="urn:Aritmetica#restar" />
+        <input>
+          <soap:body use="encoded" namespace="urn:Aritmetica"
+                     encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />       
+        </input>
+        <output>
+          <soap:body use="encoded" namespace="urn:Aritmetica"
+                     encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />       
+        </output>
+    </operation>
+	<operation name="multiplicar">
+        <soap:operation soapAction="urn:Aritmetica#multiplicar" />
         <input>
           <soap:body use="encoded" namespace="urn:Aritmetica"
                      encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />       

@@ -14,8 +14,13 @@ function sumar($operando1,$operando2){
 function restar($operando1,$operando2){
       return $operando1-$operando2;
 }
+
+function multiplicar($operando1,$operando2){
+      return $operando1*$operando2;
+}
  
 $server->AddFunction("sumar");
 $server->AddFunction("restar");
+$server->AddFunction("multiplicar");
 $server->handle();
 ?>
