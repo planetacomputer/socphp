@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="urn:mi_ws1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:mi_ws1">
+<types>
+<xsd:schema targetNamespace="urn:mi_ws1"
+>
+ <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+ <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+ <xsd:complexType name="datos_persona_entrada">
+  <xsd:all>
+   <xsd:element name="nombre" type="xsd:string"/>
+   <xsd:element name="email" type="xsd:string"/>
+   <xsd:element name="telefono" type="xsd:string"/>
+   <xsd:element name="ano_nac" type="xsd:int"/>
+  </xsd:all>
+ </xsd:complexType>
+ <xsd:complexType name="datos_persona_salidad">
+  <xsd:all>
+   <xsd:element name="mensaje" type="xsd:string"/>
+  </xsd:all>
+ </xsd:complexType>
+</xsd:schema>
+</types>
+<message name="calculo_edadRequest">
+  <part name="datos_persona_entrada" type="tns:datos_persona_entrada" /></message>
+<message name="calculo_edadResponse">
+  <part name="return" type="tns:datos_persona_salidad" /></message>
+<portType name="Mi Web ServicePortType">
+  <operation name="calculo_edad">
+    <documentation>La siguiente funcion recibe los parametros de la persona y calcula la Edad</documentation>
+    <input message="tns:calculo_edadRequest"/>
+    <output message="tns:calculo_edadResponse"/>
+  </operation>
+</portType>
+<binding name="Mi Web ServiceBinding" type="tns:Mi Web ServicePortType">
+  <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <operation name="calculo_edad">
+    <soap:operation soapAction="urn:hellowsdl2#calculo_edad" style="rpc"/>
+    <input><soap:body use="encoded" namespace="urn:mi_ws1" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+    <output><soap:body use="encoded" namespace="urn:mi_ws1" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+  </operation>
+</binding>
+<service name="Mi Web Service">
+  <port name="Mi Web ServicePort" binding="tns:Mi Web ServiceBinding">
+    <soap:address location="http://www.mauricioalpizar.com/ejemplos/nusoap/mi_ws1.php"/>
+  </port>
+</service>
+</definitions>
