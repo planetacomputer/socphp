@@ -26,14 +26,23 @@
 </body>
 </html>
 <?php
-if($_SERVER['REQUEST_METHOD'] == 'POST'):
+if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['terme'] != ""):
 	echo '<hr><div class="w3-container">';
 	$xml = simplexml_load_file("http://localhost/wordpress2/?s=" . $_POST['terme'] . "&feed=rss2") or die("Error: Cannot create object");
-	echo "<ul class='w3-large'>";
-	foreach($xml->channel->children() as $items) { 
-		if(strlen($items->title)>3)
-	        echo ("<li class='w3-hover-green'><a target='_blank' href=".$items->link.">". $items->title."</a></li><br>");       
-	} 
-	echo '</div>';
+	if(count($xml->xpath('//channel/item')) > 0):
+		echo "<ul class='w3-large'>";
+		foreach($xml->channel->children() as $items) { 
+			if(strlen($items->title)>3)
+		        echo ("<li class='w3-hover-green'><a target='_blank' href=".$items->link.">". $items->title."</a></li><br>");       
+		} 
+		echo '</div>';
+	else:
+		echo("<div class='w3-container w3-section w3-yellow'>No se han encontrado resultados</div>");
+	endif;
+else:
+	echo("<div class='w3-container w3-yellow w3-lobster'>
+	  <h3>Cuidado!</h3>
+	  <p>Escull un terme de cerca!.</p>
+	</div>");
 endif;
 ?>
