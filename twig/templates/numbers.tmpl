@@ -1,13 +1,14 @@
 <html>
   <head>
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
   <body>
   {% set pares = 0 %}
   {% set impares = 0 %}
   <div class="w3-round-small w3-teal w3-padding" style="text-align: center;">
     {% if (numPremio == num) %}
-      OLLEEEEEE
+      <i class="fa fa-thumbs-o-up" style="font-size:48px;color:blue;"></i>
     {% endif %}
     <h3>{{numbers | length}} intentos</h3>
     <span class="w3-badge w3-jumbo w3-padding-large w3-red" id="pares"> </span>pares
