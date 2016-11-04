@@ -6,9 +6,12 @@
   {% set pares = 0 %}
   {% set impares = 0 %}
   <div class="w3-round-small w3-teal w3-padding" style="text-align: center;">
+    {% if (numPremio == num) %}
+      OLLEEEEEE
+    {% endif %}
     <h3>{{numbers | length}} intentos</h3>
-    <span class="w3-badge w3-jumbo w3-padding-large w3-red" id="pares">{{pares}} </span>pares
-    <h3 id="impares">{{impares}} </h3>impares
+    <span class="w3-badge w3-jumbo w3-padding-large w3-red" id="pares"> </span>pares
+    <h3 id="impares"> </h3>impares
     <h2>Odd or Even</h2>
     {% if div == 0 %}
       {{ num }} is even.
@@ -26,7 +29,7 @@
         </tr>
       	 {% for x in numbers %}
             <tr>
-               <td><span class="w3-badge w3-green">{{numbers | length - loop.index+1}}</span></td>
+               <td><span class="w3-badge w3-green">{{numbers | length - loop.index}}</span></td>
           	   {% if x%2 == 0 %}
                   <td>{{x}}</td>
                   <td></td>
@@ -42,9 +45,11 @@
       {{pares}}
     </div>
     <script type="text/javascript">
+    {% if activado %}
       setTimeout(function(){
         location = ''
       },5000);
+    {% endif %}
       document.getElementById("pares").innerHTML = {{pares}};
       document.getElementById("impares").innerHTML = {{impares}};
     </script>
